@@ -17,6 +17,10 @@ const Home = () => {
           <ProductCard />
           <ProductCard />
           <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </div>
         <div className="flex mt-6 justify-between gap-6">
           <div>

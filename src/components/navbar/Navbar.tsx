@@ -389,6 +389,20 @@ const Navbar = () => {
         <div className="bg-gray-100 p-2 rounded-full">
           <BsPerson size={24} />
         </div>
+        <div>
+          <Link
+            to="/authentication/login"
+            className="after:content-['/'] after:font-semibold after:text-xl after:px-1 after:hover:text-black hover:text-orange-500 cursor-pointer font-semibold"
+          >
+            Login
+          </Link>
+          <Link
+            to={"/authentication/registration"}
+            className="hover:text-orange-500 cursor-pointer font-semibold"
+          >
+            Registration
+          </Link>
+        </div>
       </div>
     </div>
   );
