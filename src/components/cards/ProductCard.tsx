@@ -1,7 +1,7 @@
 import { AiOutlineStar, AiFillHeart, AiOutlineEye } from "react-icons/ai";
 import { BiRecycle } from "react-icons/bi";
 
-const ProductCard = () => {
+const ProductCard: React.FC = ({ modal, setModal }) => {
   const maxRating = 5;
   const rating = 5;
   return (
@@ -12,10 +12,10 @@ const ProductCard = () => {
           alt=""
         />
       </div>
-      <div className="border-b-2 border-stone-200 py-3">
+      <div className="py-3 border-b-2 border-stone-200">
         <div className="group ">
           <div className="group-hover:hidden">
-            <div className="flex gap-4 items-center  justify-between">
+            <div className="flex items-center justify-between gap-4">
               <span className="uppercase text-[12px] text-slate-500">
                 Fragrances
               </span>
@@ -34,21 +34,26 @@ const ProductCard = () => {
             </div>
           </div>
           <div className="hidden group-hover:block">
-            <div className="flex gap-4 items-center  justify-between">
+            <div className="flex items-center justify-between gap-4">
               <button className="text-slate-500 hover:text-orange-500 text-[12px] font-bold">
                 ADD TO CART
               </button>
               <div className="flex gap-4">
-                <AiFillHeart className="text-slate-400 cursor-pointer hover:text-orange-500" />
-                <BiRecycle className="text-slate-400 cursor-pointer hover:text-orange-500" />
-                <AiOutlineEye className="text-slate-400 cursor-pointer hover:text-orange-500" />
+                <AiFillHeart className="cursor-pointer text-slate-400 hover:text-orange-500" />
+                <BiRecycle className="cursor-pointer text-slate-400 hover:text-orange-500" />
+                <AiOutlineEye
+                  className="cursor-pointer text-slate-400 hover:text-orange-500"
+                  onClick={() => {
+                    setModal(!modal);
+                  }}
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="text-center pt-2">
+      <div className="pt-2 text-center">
         <h4 className="text-lg font-semibold hover:text-orange-500">
           Women Dress
         </h4>

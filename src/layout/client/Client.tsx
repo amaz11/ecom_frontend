@@ -4,13 +4,13 @@ import Footer from "../../components/Footer";
 
 const Client = () => {
   return (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
       <div className="mt-24">
         <Outlet />
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 
