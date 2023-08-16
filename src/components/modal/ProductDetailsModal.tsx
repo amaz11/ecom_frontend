@@ -1,6 +1,6 @@
 import { AiOutlineStar } from "react-icons/ai";
 
-const ProductDetailsModal = () => {
+const ProductDetailsModal: React.FC = () => {
   const maxRating = 5;
   const rating = 5;
   return (

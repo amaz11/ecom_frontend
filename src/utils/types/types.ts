@@ -1,0 +1,1 @@
+export type ModalType = {modal:boolean, setModal: (value: boolean) => void}

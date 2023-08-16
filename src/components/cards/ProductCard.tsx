@@ -1,7 +1,8 @@
 import { AiOutlineStar, AiFillHeart, AiOutlineEye } from "react-icons/ai";
 import { BiRecycle } from "react-icons/bi";
+import { ModalType } from "../../utils/types/types";
 
-const ProductCard: React.FC = ({ modal, setModal }) => {
+const ProductCard = ({ modal, setModal }: ModalType) => {
   const maxRating = 5;
   const rating = 5;
   return (
