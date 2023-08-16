@@ -14,7 +14,9 @@ const Home: React.FC = () => {
     if (modal) {
       document.body.style.overflow = "hidden";
     }
-    return () => (document.body.style.overflow = "unset");
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [modal]);
   return (
     <div className="overflow-hidden">
