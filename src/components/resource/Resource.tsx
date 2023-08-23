@@ -5,8 +5,8 @@ import "./recource.css";
 const Resource = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pt-4 gap-4 justify-center items-center border-b-2 border-stone-200">
-      <div className="p-4  group">
-        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378]">
+      <div className="p-4  group text-center md:text-left">
+        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378] mx-auto md:mx-0">
           <BsFillGiftFill
             className="text-white group-hover:text-black"
             size={20}
@@ -17,8 +17,8 @@ const Resource = () => {
           Aenean finibus arcu sit amet magna pulvinar, ac posuere.
         </span>
       </div>
-      <div className="p-4  group">
-        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378]">
+      <div className="p-4  group text-center md:text-left">
+        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378] mx-auto md:mx-0">
           <MdOutlineMobileFriendly
             className="text-white group-hover:text-black"
             size={24}
@@ -29,8 +29,8 @@ const Resource = () => {
           Aenean finibus arcu sit amet magna pulvinar, ac posuere.
         </span>
       </div>
-      <div className="p-4  group">
-        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378]">
+      <div className="p-4  group text-center md:text-left">
+        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378] mx-auto md:mx-0">
           <BiSolidTruck
             className="text-white group-hover:text-black"
             size={24}
@@ -41,8 +41,8 @@ const Resource = () => {
           Aenean finibus arcu sit amet magna pulvinar, ac posuere.
         </span>
       </div>
-      <div className="p-4  group">
-        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px]  flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378]">
+      <div className="p-4  group text-center md:text-left">
+        <div className="bg-[#EA9378] p-2 rounded-full w-[50px] h-[50px]  flex justify-center items-center group-hover:bg-white group-hover:border-2 group-hover:border-[#EA9378] mx-auto md:mx-0">
           <BiRecycle className="text-white group-hover:text-black" size={24} />
         </div>
         <h4 className="font-bold text-base mt-4 ">Items in stock</h4>

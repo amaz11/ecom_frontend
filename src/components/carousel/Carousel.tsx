@@ -16,11 +16,11 @@ import carouselimg3 from "../../assets/31-614.jpg";
 
 const Carousel = () => {
   return (
-    <div className="relative">
-      <div className="swiper-button image-swiper-button-next">
+    <div className="relative group">
+      <div className="hidden swiper-button image-swiper-button-next group-hover:block">
         <FaLongArrowAltRight />
       </div>
-      <div className="swiper-button image-swiper-button-prev">
+      <div className="hidden swiper-button image-swiper-button-prev group-hover:block">
         <FaLongArrowAltLeft />
       </div>
       <Swiper
@@ -37,7 +37,7 @@ const Carousel = () => {
           style={{
             backgroundImage: `url(${carouselimg1})`,
             backgroundRepeat: "no-repeat",
-            objectFit: "cover",
+            backgroundSize: "cover",
           }}
         >
           <div className="">
@@ -62,7 +62,7 @@ const Carousel = () => {
           style={{
             backgroundImage: `url(${carouselimg2})`,
             backgroundRepeat: "no-repeat",
-            objectFit: "cover",
+            backgroundSize: "cover",
           }}
         >
           <div className="">
@@ -87,11 +87,11 @@ const Carousel = () => {
           style={{
             backgroundImage: `url(${carouselimg3})`,
             backgroundRepeat: "no-repeat",
-            objectFit: "cover",
+            backgroundSize: "cover",
           }}
         >
           <div className="">
-            <span className="uppercase font-semibold text-gray-600 text-[16px]">
+            <span className="uppercase font-semibold text-gray-600 text-[16px] ">
               Save Up to 40% OFF
             </span>
             <h2 className="font-bold text-4xl text-orange-500">

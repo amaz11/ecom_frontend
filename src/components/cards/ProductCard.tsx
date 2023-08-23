@@ -9,6 +9,7 @@ const ProductCard = ({ modal, setModal }: ModalType) => {
     <div>
       <div>
         <img
+          className="w-full"
           src="https://demo.fieldthemes.com/seven/home2/94-home_default/watch-for-men.jpg"
           alt=""
         />

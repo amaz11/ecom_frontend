@@ -6,10 +6,6 @@ import { useEffect, useState } from "react";
 
 const Home: React.FC = () => {
   const [modal, setModal] = useState(false);
-  // type modleType = {
-  //   modal: boolean;
-  //   setModal: Dispatch<SetStateAction<boolean>>;
-  // };
   useEffect(() => {
     if (modal) {
       document.body.style.overflow = "hidden";
@@ -21,7 +17,7 @@ const Home: React.FC = () => {
   return (
     <div className="overflow-hidden">
       <Carousel />
-      <div className="mx-150px md:mx-[200px] lg:mx-[400px]">
+      <div className="mx-[50px] md:mx-[150px] lg:mx-[250px]">
         <Resource />
         <div className="my-6 text-center">
           <h2 className="pb-4 text-3xl font-bold">Feature Products</h2>
@@ -38,16 +34,16 @@ const Home: React.FC = () => {
           <ProductCard modal={modal} setModal={setModal} />
         </div>
         <div className="flex justify-between gap-6 mt-6">
-          <div>
+          <div className="w-full">
             <img
-              // className="hover:border-4 hover:border-white"
+              className="w-full"
               src="https://demo.fieldthemes.com/seven/modules/fieldstaticblocks/images/8.jpg"
               alt="img0"
             />
           </div>
-          <div>
+          <div className="w-full">
             <img
-              // className="hover:border-4 hover:border-white"
+              className="w-full"
               src="https://demo.fieldthemes.com/seven/modules/fieldstaticblocks/images/9.jpg"
               alt="img1"
             />
@@ -63,7 +59,7 @@ const Home: React.FC = () => {
                 setModal(!modal);
               }}
             ></div>
-            <ProductDetailsModal />
+            <ProductDetailsModal modal={modal} setModal={setModal} />
           </>
         ) : null}
       </div>

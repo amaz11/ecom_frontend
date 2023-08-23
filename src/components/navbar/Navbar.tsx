@@ -4,15 +4,20 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
+import { BiChevronDown } from "react-icons/bi";
+import { FaBars } from "react-icons/fa";
+import { useState } from "react";
+
 const Navbar = () => {
+  const [user] = useState<boolean>(false);
   return (
-    <div className="flex justify-between px-16 py-4 items-center fixed z-[50] bg-white w-full top-0 border-b-2">
+    <div className="flex justify-between gap-4 px-3 md:px-16 py-4 items-center fixed z-[50] bg-white w-full top-0 border-b-2">
       <div className="flex items-center justify-between gap-12">
-        <div>
-          <img src={logo} alt="logo" />
+        <div className="w-28 md:w-full lg:w-32">
+          <img className="w-full" src={logo} alt="logo" />
         </div>
-        <div>
-          <ul className="flex items-center justify-around px-3 ml-20 gap-14">
+        <div className="hidden lg:block">
+          <ul className="flex items-center justify-around px-3 lg:gap-2 xl:gap-14">
             <li>
               <Link
                 className="p-2 font-semibold cursor-pointer hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500"
@@ -23,10 +28,10 @@ const Navbar = () => {
             </li>
             <li className="group">
               <Link className="relative cursor-pointer " to="/men">
-                <span className="p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
-                  Men
+                <span className="p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500 flex items-center">
+                  Men <BiChevronDown size={20} />
                 </span>
-                <div className="absolute -top-96  group-hover:z-20 group-hover:top-7 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
+                <div className="absolute -top-96  group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
                   <Dropdown>
                     <div className="grid justify-center grid-cols-3 gap-x-20 gap-y-4">
                       <div>
@@ -183,10 +188,11 @@ const Navbar = () => {
             </li>
             <li className="group">
               <Link className="relative cursor-pointer " to="/women">
-                <span className="p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
+                <span className="p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500 flex items-center">
                   Women
+                  <BiChevronDown size={20} />
                 </span>
-                <div className="absolute -top-96 group-hover:z-20 group-hover:top-7 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
+                <div className="absolute -top-96 group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
                   <Dropdown>
                     <div className="grid justify-center grid-cols-3 gap-x-20 gap-y-4">
                       <div>
@@ -376,8 +382,8 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="flex items-center gap-5">
-        <div>
+      <div className="flex items-center gap-5 ">
+        <div className="hidden md:block">
           <AiOutlineSearch size={24} />
         </div>
         <div className="relative">
@@ -386,23 +392,36 @@ const Navbar = () => {
             0
           </span>
         </div>
-        <div className="p-2 bg-gray-100 rounded-full">
-          <BsPerson size={24} />
+        {user ? (
+          <div className="p-2 bg-gray-100 rounded-full">
+            <BsPerson size={24} />
+          </div>
+        ) : null}
+
+        <div className="block lg:hidden">
+          <FaBars size={24} />
         </div>
-        <div>
-          <Link
-            to="/authentication/login"
-            className="after:content-['/'] after:font-semibold after:text-xl after:px-1 after:hover:text-black hover:text-orange-500 cursor-pointer font-semibold"
-          >
-            Login
-          </Link>
-          <Link
-            to={"/authentication/registration"}
-            className="font-semibold cursor-pointer hover:text-orange-500"
-          >
-            Registration
-          </Link>
-        </div>
+
+        {user ? null : (
+          <div className="hidden lg:block">
+            <Link
+              to="/authentication/login"
+              className="after:content-['/'] after:font-semibold after:text-xl after:px-1 after:hover:text-black hover:text-orange-500 cursor-pointer font-semibold"
+            >
+              Login
+            </Link>
+            <Link
+              to={"/authentication/registration"}
+              className="font-semibold cursor-pointer hover:text-orange-500"
+            >
+              Registration
+            </Link>
+          </div>
+        )}
+
+        {/* <div className="hidden lg:block">
+          <FaBars size={24} />
+        </div> */}
       </div>
     </div>
   );
