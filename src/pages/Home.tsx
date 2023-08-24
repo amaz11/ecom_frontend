@@ -15,7 +15,7 @@ const Home: React.FC = () => {
     };
   }, [modal]);
   return (
-    <div className="overflow-hidden">
+    <div className="">
       <Carousel />
       <div className="mx-[50px] md:mx-[150px] lg:mx-[250px]">
         <Resource />

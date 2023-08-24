@@ -8,27 +8,27 @@ const ProductDetailsModal = ({ modal, setModal }: ModalType) => {
   const maxRating = 5;
   const rating = 5;
   return (
-    <div className="fixed p-4 bg-white top-[20%] z-[120] left-1/4 flex gap-4">
-      <div className="w-[500px]">
+    <div className="fixed p-4 bg-white top-0 md:top-[20%] z-[120] left-0 m-4 mb-5 md:left-1/4 flex gap-4 flex-col md:flex-row overflow-scroll h-[91vh] md:h-auto">
+      <div className="md:w-auto lg:w-[15vw]">
         <img
-          className="w-full"
+          className="w-full h-full"
           src="https://demo.fieldthemes.com/seven/home2/94-home_default/watch-for-men.jpg"
           alt="productimg"
         />
       </div>
-      <div className="w-[500px]">
+      <div className="max-w-[500px] md:w-[25vw]">
         <div className="absolute top-0 right-0">
           <RxCross2
             size={18}
-            className="cursor-pointer hover:text-white hover:bg-orange-500 font-bold"
+            className="font-bold cursor-pointer hover:text-white hover:bg-orange-500"
             onClick={() => {
               setModal(!modal);
             }}
           />
         </div>
-        <h2 className="font-bold mb-5">INDIGO LOGO CREWNECK</h2>
-        <span className="text-orange-500 font-bold">$250.00</span>
-        <div className="flex mt-5">
+        <h2 className="mb-2 font-bold md:mb-5">INDIGO LOGO CREWNECK</h2>
+        <span className="font-bold text-orange-500">$250.00</span>
+        <div className="flex mt-2 md:mt-5">
           {Array.from({ length: maxRating }).map((_, i: number) => {
             return (
               <AiOutlineStar
@@ -40,14 +40,14 @@ const ProductDetailsModal = ({ modal, setModal }: ModalType) => {
             );
           })}
         </div>
-        <p className="mt-5">
+        <p className="mt-2 md:mt-5">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis quod
           temporibus ratione, tenetur adipisci consequatur quia ipsam vero
           voluptas? Est, vero repellat corrupti pariatur nulla dolorum sapiente,
           minus doloribus dolorem esse ab, nam tempora sint ipsum atque
           inventore voluptatibus? Perspiciatis, maiores.
         </p>
-        <div className="mt-5 flex gap-4 items-center">
+        <div className="flex items-center gap-4 mt-5">
           <button className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-orange-600">
             Add to Cart
           </button>

@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 
 const Client = () => {
   return (
-    <div className="overflow-hidden">
+    <div className="">
       <Navbar />
       <div className="mt-24">
         <Outlet />
