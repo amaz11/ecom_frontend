@@ -1,8 +1,9 @@
+import { ProductData } from "../../utils/types/types";
 import { apiSlice } from "../features/apiSlice";
 
 const productSlice = apiSlice.injectEndpoints({
         endpoints:(build)=>({
-            getProducts:build.query({
+            getProducts:build.query<ProductData,string>({
                 query:()=>"/products"
             }),
             getProduct: build.query({

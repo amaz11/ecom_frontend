@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 const Home: React.FC = () => {
   const [modal, setModal] = useState<boolean>(false);
+
   useEffect(() => {
     if (modal) {
       document.body.style.overflow = "hidden";
@@ -24,13 +25,6 @@ const Home: React.FC = () => {
           <hr className="w-[280px] border-b-2 border-stone-200 mx-auto" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-          <ProductCard modal={modal} setModal={setModal} />
-          <ProductCard modal={modal} setModal={setModal} />
-          <ProductCard modal={modal} setModal={setModal} />
-          <ProductCard modal={modal} setModal={setModal} />
-          <ProductCard modal={modal} setModal={setModal} />
-          <ProductCard modal={modal} setModal={setModal} />
-          <ProductCard modal={modal} setModal={setModal} />
           <ProductCard modal={modal} setModal={setModal} />
         </div>
         <div className="flex justify-between gap-6 mt-6">
