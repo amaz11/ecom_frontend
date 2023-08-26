@@ -3,7 +3,7 @@ import { apiSlice } from "../features/apiSlice";
 
 const productSlice = apiSlice.injectEndpoints({
         endpoints:(build)=>({
-            getProducts:build.query<ProductData,string>({
+            getProducts:build.query<ProductData,void>({
                 query:()=>"/products"
             }),
             getProduct: build.query({
