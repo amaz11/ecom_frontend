@@ -3,10 +3,14 @@ import { BiRecycle } from "react-icons/bi";
 import { ModalType, Product } from "../../utils/types/types";
 import { useGetProductsQuery } from "../../app/productSlice/productSlice";
 
-const ProductCard = ({ modal, setModal }: ModalType) => {
+const ProductCard = ({ modal, setModal, setProductId }: ModalType) => {
   const { data, isLoading, isError } = useGetProductsQuery();
   const maxRating = 5;
-  const rating = 5;
+  const handeleProductID = (id: string) => {
+    if (setProductId && id) {
+      setProductId(id);
+    }
+  };
   let content: JSX.Element | null = null;
   if (isLoading) {
     content = <>Loading....</>;
@@ -19,11 +23,11 @@ const ProductCard = ({ modal, setModal }: ModalType) => {
       <>
         {data?.products?.map((item: Product) => {
           return (
-            <div key={item._id}>
-              <div>
+            <div key={item?._id}>
+              <div className="h-60 ">
                 <img
-                  className="w-full"
-                  src="https://demo.fieldthemes.com/seven/home2/94-home_default/watch-for-men.jpg"
+                  className="w-full h-full"
+                  src={item?.images[0].url}
                   alt=""
                 />
               </div>
@@ -32,7 +36,7 @@ const ProductCard = ({ modal, setModal }: ModalType) => {
                   <div className="group-hover:hidden">
                     <div className="flex items-center justify-between gap-4">
                       <span className="uppercase text-[12px] text-slate-500">
-                        Fragrances
+                        {item?.name}
                       </span>
                       <div className="flex">
                         {Array.from({ length: maxRating }).map(
@@ -41,7 +45,7 @@ const ProductCard = ({ modal, setModal }: ModalType) => {
                               <AiOutlineStar
                                 key={i}
                                 className={`${
-                                  i + 1 <= rating
+                                  i + 1 <= parseInt(item?.ratings)
                                     ? "text-orange-500"
                                     : "text-gray-300"
                                 }`}
@@ -63,6 +67,7 @@ const ProductCard = ({ modal, setModal }: ModalType) => {
                         <AiOutlineEye
                           className="cursor-pointer text-slate-400 hover:text-orange-500"
                           onClick={() => {
+                            handeleProductID(item._id);
                             setModal(!modal);
                           }}
                         />

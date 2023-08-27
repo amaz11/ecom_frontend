@@ -1,4 +1,4 @@
-export type ModalType = {modal:boolean, setModal: (value: boolean) => void}
+export type ModalType = {modal:boolean, setModal: (value: boolean) => void,productId?:string, setProductId?:(value:string)=> void}
 export type Product = {
     Stock:number, 
     category: string,
@@ -8,7 +8,7 @@ export type Product = {
     name:string,
     numofReviwes:number,
     price:20,
-    ratings:"4",
+    ratings:string,
     reviwes: {comment: string,name:string,rating:number,time:string,user:string,_id:string}[],
     updatedAt?:string,
     __v?: number,
@@ -18,5 +18,9 @@ export type ProductData =   {
     products:Product[],
     productsCount:number,
     resultPerPage:number,
+    success:boolean,
+}
+export type ApiSingleProduct ={
+    product:Product,
     success:boolean,
 }
