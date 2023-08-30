@@ -6,10 +6,10 @@ import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
-import { useState } from "react";
+import { currentUser } from "../../utils/auth";
 
 const Navbar = () => {
-  const [user] = useState<boolean>(false);
+  const user = currentUser();
   return (
     <div className="flex justify-between gap-4 px-3 md:px-16 py-4 items-center fixed z-[50] bg-white w-full top-0 border-b-2">
       <div className="flex items-center justify-between gap-12">
@@ -28,7 +28,7 @@ const Navbar = () => {
             </li>
             <li className="group">
               <Link className="relative cursor-pointer " to="/men">
-                <span className="p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500 flex items-center">
+                <span className="flex items-center p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
                   Men <BiChevronDown size={20} />
                 </span>
                 <div className="absolute -top-96  group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
@@ -42,7 +42,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -50,7 +50,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -74,7 +74,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -98,7 +98,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -114,7 +114,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -122,7 +122,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -138,7 +138,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -146,7 +146,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -162,7 +162,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -170,7 +170,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -188,7 +188,7 @@ const Navbar = () => {
             </li>
             <li className="group">
               <Link className="relative cursor-pointer " to="/women">
-                <span className="p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500 flex items-center">
+                <span className="flex items-center p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
                   Women
                   <BiChevronDown size={20} />
                 </span>
@@ -203,7 +203,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -211,7 +211,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -227,7 +227,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -235,7 +235,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -251,7 +251,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -259,7 +259,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -275,7 +275,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -283,7 +283,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -299,7 +299,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -307,7 +307,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -323,7 +323,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px] hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               Object
                             </Link>
@@ -331,7 +331,7 @@ const Navbar = () => {
                           <li>
                             <Link
                               className="hover:text-orange-500 hover:pl-[2px]  hover:delay-100 hover:transition-all"
-                              to="#"
+                              to="/"
                             >
                               TableTop
                             </Link>
@@ -392,7 +392,7 @@ const Navbar = () => {
             0
           </span>
         </div>
-        {user ? (
+        {user !== null ? (
           <div className="p-2 bg-gray-100 rounded-full">
             <BsPerson size={24} />
           </div>
@@ -402,7 +402,7 @@ const Navbar = () => {
           <FaBars size={24} />
         </div>
 
-        {user ? null : (
+        {user !== null ? null : (
           <div className="hidden lg:block">
             <Link
               to="/authentication/login"

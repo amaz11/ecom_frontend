@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 const Home: React.FC = () => {
   const [modal, setModal] = useState<boolean>(false);
   const [productId, setProductId] = useState<string>("");
-  console.log(productId);
   useEffect(() => {
     if (modal) {
       document.body.style.overflow = "hidden";

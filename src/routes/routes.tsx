@@ -3,6 +3,8 @@ import Client from "../layout/client/Client";
 import Home from "../pages/Home";
 import Authentication from "../pages/Authentication";
 import Auth from "../layout/auth/Auth";
+import ProtectedPage from "../pages/ProtectedPage";
+import { authTokenCheck } from "../utils/auth";
 
 export const routers = createBrowserRouter([
   {
@@ -13,6 +15,11 @@ export const routers = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/protected",
+        element: <ProtectedPage />,
+        loader: () => authTokenCheck,
       },
     ],
   },

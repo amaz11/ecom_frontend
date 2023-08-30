@@ -3,16 +3,41 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import logo from "../assets/seven2-logo-15153843922.jpg";
 import person from "../assets/personProfile.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { LoginRequest } from "../utils/types/types";
+import { useLoginMutation } from "../app/authApi/authApi";
+import { useDispatch } from "react-redux";
+import { setToken } from "../app/authSlice/authSlice";
 const Authentication: React.FC = () => {
   const [passShow, setPassShow] = useState<boolean>(false);
+  const [input, setInput] = useState<LoginRequest>({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const [login, { isLoading }] = useLoginMutation();
+  // const { token, user } = useSelector(clgToken);
+  const dispatch = useDispatch();
+
   const isLogin = window.location.pathname === "/authentication/login";
-  let i, j;
-  for (i = 5; i >= 1; i--) {
-    for (j = 1; j <= i; j++) {
-      console.log("*");
+  const handelInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (isLogin) {
+      const res = await login(input);
+      if ("data" in res) {
+        dispatch(setToken(res.data));
+        // const user = res.data.access_token.split(".")[1];
+        // console.log(JSON.parse(atob(user)));
+        localStorage.setItem("accessToken", res.data.access_token);
+        localStorage.setItem("currentUser", JSON.stringify(res.data.user));
+        navigate("/");
+      }
     }
-  }
+  };
   return (
     <>
       <div className="flex flex-col justify-center min-h-screen py-6 mx-3 bg-gray-100 sm:py-12">
@@ -23,7 +48,7 @@ const Authentication: React.FC = () => {
               <div className="flex justify-center mx-auto">
                 <img src={logo} alt="" />
               </div>
-              <form action="">
+              <form action="" onSubmit={submitHandler}>
                 <div className="divide-y divide-gray-200">
                   <div className="py-8 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
                     {isLogin ? null : (
@@ -41,7 +66,6 @@ const Authentication: React.FC = () => {
                             type="file"
                             className="absolute top-0 left-0 z-20 w-full h-full rounded-full opacity-0 cursor-pointer"
                             name=""
-                            id=""
                           />
                           <div className="absolute bottom-0 right-0 z-10 w-12 h-12 p-3 overflow-hidden bg-white border border-orange-500 rounded-full cursor-pointer">
                             <img
@@ -72,6 +96,8 @@ const Authentication: React.FC = () => {
                       <input
                         autoComplete="off"
                         name="email"
+                        value={input.email}
+                        onChange={handelInput}
                         type="email"
                         className="w-full h-10 text-gray-900 placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:borer-rose-600"
                         placeholder="Email address"
@@ -87,6 +113,8 @@ const Authentication: React.FC = () => {
                       <input
                         autoComplete="off"
                         name="password"
+                        value={input.password}
+                        onChange={handelInput}
                         type={`${passShow ? "text" : "password"}`}
                         className="w-full h-10 text-gray-900 placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:borer-rose-600"
                         placeholder="Password"
@@ -139,8 +167,11 @@ const Authentication: React.FC = () => {
                     )}
 
                     <div className="relative">
-                      <button className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-black">
-                        Register Now!
+                      <button
+                        disabled={isLoading}
+                        className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-black"
+                      >
+                        {isLogin ? "Log in" : "Register Now!"}
                       </button>
                     </div>
                   </div>

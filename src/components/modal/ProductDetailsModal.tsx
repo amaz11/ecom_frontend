@@ -1,8 +1,10 @@
 import { AiOutlineStar, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
-import { ModalType } from "../../utils/types/types";
+import { ModalType, Product } from "../../utils/types/types";
 import { useState } from "react";
 import { useGetProductQuery } from "../../app/productSlice/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, cartState } from "../../app/cartSlice/cartSlice";
 
 const ProductDetailsModal = ({
   modal,
@@ -11,11 +13,27 @@ const ProductDetailsModal = ({
   setProductId,
 }: ModalType) => {
   const [like, setLike] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<number>(1);
   const { data, isLoading, isError, error } = useGetProductQuery(
     productId || ""
   );
-
+  const { cart } = useSelector(cartState);
+  const dispatch = useDispatch();
+  console.log(cart);
+  const decreseQuantity = () => {
+    if (1 >= quantity) return;
+    setQuantity((prevState) => prevState - 1);
+  };
+  const increseQuantity = (stock: number) => {
+    if (stock <= quantity) return;
+    setQuantity((prevState) => prevState + 1);
+  };
   const maxRating = 5;
+  const addToCart = (product: Product) => {
+    const temProduct = { ...product, quantity };
+    dispatch(addProduct(temProduct));
+  };
+
   let content: JSX.Element | null = null;
   if (isError) {
     content = <>Error: {error}</>;
@@ -26,11 +44,11 @@ const ProductDetailsModal = ({
   // md:left-[10%] lg:left-1/4
   if (data) {
     content = (
-      <div className="fixed p-4 bg-white  top-[calc(22.33%-80px)] md:top-[calc(22%-110px)] lg:top-[calc(33.33%-110px)] z-[120] left-[calc(22%-80px)] md:left-[calc(22%-110px)] lg:left-[calc(33.33%-110px)]   m-4 mb-5  flex gap-4 flex-col md:flex-row overflow-scroll h-auto md:h-auto">
+      <div className="fixed p-4 bg-white  top-[calc(22.33%-80px)] md:top-[calc(22%-110px)] lg:top-[calc(33.33%-110px)] z-[120] left-[calc(22%-80px)] md:left-[calc(22%-110px)] lg:left-[calc(40%-110px)]   m-4 mb-5  flex gap-4 flex-col md:flex-row overflow-scroll h-auto md:h-auto">
         <div className="w-full md:w-96 lg:w-[15vw] h-96 md:h-auto">
           <img className="w-full h-full" src={data?.product?.images[0].url} />
         </div>
-        <div className=" md:w-[25vw]">
+        <div className=" md:max-w-[25vw]">
           <div className="absolute top-0 right-0">
             <RxCross2
               size={18}
@@ -62,8 +80,26 @@ const ProductDetailsModal = ({
             })}
           </div>
           <p className="mt-2 md:mt-5">{data?.product?.description}</p>
+          <div className="flex mt-5">
+            <button
+              className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-orange-600 w-8"
+              onClick={decreseQuantity}
+            >
+              -
+            </button>
+            <span className="mx-auto">{quantity}</span>
+            <button
+              className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-orange-600 w-8"
+              onClick={() => increseQuantity(data?.product?.Stock)}
+            >
+              +
+            </button>
+          </div>
           <div className="flex items-center gap-4 mt-5">
-            <button className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-orange-600">
+            <button
+              className="px-3 py-0.5 font-semibold text-white bg-orange-500 hover:bg-orange-600"
+              onClick={() => addToCart(data?.product)}
+            >
               Add to Cart
             </button>
             {like ? (
