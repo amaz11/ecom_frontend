@@ -3,8 +3,8 @@ import { RxCross2 } from "react-icons/rx";
 import { ModalType, Product } from "../../utils/types/types";
 import { useState } from "react";
 import { useGetProductQuery } from "../../app/productSlice/productSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { addProduct, cartState } from "../../app/cartSlice/cartSlice";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../app/cartSlice/cartSlice";
 
 const ProductDetailsModal = ({
   modal,
@@ -17,9 +17,7 @@ const ProductDetailsModal = ({
   const { data, isLoading, isError, error } = useGetProductQuery(
     productId || ""
   );
-  const { cart } = useSelector(cartState);
   const dispatch = useDispatch();
-  console.log(cart);
   const decreseQuantity = () => {
     if (1 >= quantity) return;
     setQuantity((prevState) => prevState - 1);
@@ -30,7 +28,12 @@ const ProductDetailsModal = ({
   };
   const maxRating = 5;
   const addToCart = (product: Product) => {
-    const temProduct = { ...product, quantity };
+    const total = quantity * product?.price;
+    const temProduct = {
+      ...product,
+      quantity,
+      total,
+    };
     dispatch(addProduct(temProduct));
   };
 
@@ -41,7 +44,6 @@ const ProductDetailsModal = ({
   if (!isError && isLoading) {
     content = <>...Loading</>;
   }
-  // md:left-[10%] lg:left-1/4
   if (data) {
     content = (
       <div className="fixed p-4 bg-white  top-[calc(22.33%-80px)] md:top-[calc(22%-110px)] lg:top-[calc(33.33%-110px)] z-[120] left-[calc(22%-80px)] md:left-[calc(22%-110px)] lg:left-[calc(40%-110px)]   m-4 mb-5  flex gap-4 flex-col md:flex-row overflow-scroll h-auto md:h-auto">

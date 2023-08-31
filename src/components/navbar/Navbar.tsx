@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
-import { BiChevronDown } from "react-icons/bi";
+// import { BiChevronDown } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 import { currentUser } from "../../utils/auth";
+import { cartState } from "../../app/cartSlice/cartSlice";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { cart } = useSelector(cartState);
   const user = currentUser();
   return (
     <div className="flex justify-between gap-4 px-3 md:px-16 py-4 items-center fixed z-[50] bg-white w-full top-0 border-b-2">
@@ -29,7 +32,8 @@ const Navbar = () => {
             <li className="group">
               <Link className="relative cursor-pointer " to="/men">
                 <span className="flex items-center p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
-                  Men <BiChevronDown size={20} />
+                  Men
+                  {/* <BiChevronDown size={20} /> */}
                 </span>
                 <div className="absolute -top-96  group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
                   <Dropdown>
@@ -190,7 +194,7 @@ const Navbar = () => {
               <Link className="relative cursor-pointer " to="/women">
                 <span className="flex items-center p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
                   Women
-                  <BiChevronDown size={20} />
+                  {/* <BiChevronDown size={20} /> */}
                 </span>
                 <div className="absolute -top-96 group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
                   <Dropdown>
@@ -387,10 +391,12 @@ const Navbar = () => {
           <AiOutlineSearch size={24} />
         </div>
         <div className="relative">
-          <AiOutlineShoppingCart size={24} />
-          <span className="absolute font-semibold text-orange-500 -top-4 -right-2">
-            0
-          </span>
+          <Link to="/carts">
+            <AiOutlineShoppingCart size={24} />
+            <span className="absolute font-semibold text-orange-500 -top-4 -right-2">
+              {cart.length === 0 ? 0 : cart?.length}
+            </span>
+          </Link>
         </div>
         {user !== null ? (
           <div className="p-2 bg-gray-100 rounded-full">

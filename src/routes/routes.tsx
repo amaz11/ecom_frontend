@@ -5,6 +5,7 @@ import Authentication from "../pages/Authentication";
 import Auth from "../layout/auth/Auth";
 import ProtectedPage from "../pages/ProtectedPage";
 import { authTokenCheck } from "../utils/auth";
+import CartPage from "../pages/CartPage";
 
 export const routers = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const routers = createBrowserRouter([
         path: "/protected",
         element: <ProtectedPage />,
         loader: () => authTokenCheck,
+      },
+      {
+        path: "/carts",
+        element: <CartPage />,
       },
     ],
   },
