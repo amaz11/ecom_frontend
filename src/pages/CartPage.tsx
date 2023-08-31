@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
+  cartRemove,
   cartState,
   decreseQuantity,
   increseQuantity,
@@ -46,12 +47,12 @@ const CartPage = () => {
                 <div className="flex flex-col justify-between ml-4 flex-grow">
                   <span className="font-bold text-sm">{item.name}</span>
                   <span className="text-red-500 text-xs">{item.category}</span>
-                  <a
-                    href="#"
-                    className="font-semibold hover:text-red-500 text-gray-500 text-xs"
+                  <span
+                    onClick={() => dispatch(cartRemove(item._id))}
+                    className="font-semibold hover:text-red-500 text-gray-500 text-xs cursor-pointer"
                   >
                     Remove
-                  </a>
+                  </span>
                 </div>
               </div>
               <div className="flex justify-center w-1/5">
@@ -66,7 +67,7 @@ const CartPage = () => {
                   {item.quantity}
                 </span>
                 <svg
-                  className="fill-current text-gray-600 w-3 bg-red-500"
+                  className="fill-current text-gray-600 w-3 "
                   viewBox="0 0 448 512"
                   onClick={() => dispatch(increseQuantity(item))}
                 >
@@ -126,7 +127,10 @@ const CartPage = () => {
               className="p-2 text-sm w-full focus:outline-orange-500"
             />
           </div>
-          <button className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">
+          <button
+            disabled={cart?.length === 0 ? true : false}
+            className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase"
+          >
             Apply
           </button>
           <div className="border-t mt-8">
@@ -134,7 +138,10 @@ const CartPage = () => {
               <span>Total cost</span>
               <span>$600</span>
             </div>
-            <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+            <button
+              disabled={cart?.length === 0 ? true : false}
+              className="bg-orange-500 font-semibold hover:bg-black py-3 text-sm text-white uppercase w-full cursor-pointer"
+            >
               Checkout
             </button>
           </div>

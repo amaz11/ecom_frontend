@@ -63,11 +63,15 @@ export const cartSlice =  createSlice({
                 state.cart[findProduct].total +=  state.cart[findProduct].price
             }
             localStorage.setItem("carts", JSON.stringify(state.cart));
+        },
+        cartRemove:(state,action)=>{
+            state.cart = state.cart.filter(item=> item._id != action.payload)
+            localStorage.setItem("carts", JSON.stringify(state.cart));
         }
 
     }
 })
 
-export const  {addProduct ,setCarts,decreseQuantity,increseQuantity} = cartSlice.actions
+export const  {addProduct ,setCarts,decreseQuantity,increseQuantity,cartRemove} = cartSlice.actions
 export const cartState = (state:RootState) => state.cart
 export default cartSlice.reducer
