@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
-// import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 import { currentUser } from "../../utils/auth";
 import { cartState } from "../../app/cartSlice/cartSlice";
@@ -33,7 +33,7 @@ const Navbar = () => {
               <Link className="relative cursor-pointer " to="/men">
                 <span className="flex items-center p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
                   Men
-                  {/* <BiChevronDown size={20} /> */}
+                  <BiChevronDown size={20} />
                 </span>
                 <div className="absolute -top-96  group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
                   <Dropdown>
@@ -194,7 +194,7 @@ const Navbar = () => {
               <Link className="relative cursor-pointer " to="/women">
                 <span className="flex items-center p-3 font-semibold hover:text-orange-500 hover:border-b-2 hover:border-b-orange-500">
                   Women
-                  {/* <BiChevronDown size={20} /> */}
+                  <BiChevronDown size={20} />
                 </span>
                 <div className="absolute -top-96 group-hover:z-20 group-hover:top-12 left-0 shadow-sm border-t-2 border-t-orange-500 group-hover:delay-[400ms] group-hover:transition-all">
                   <Dropdown>
