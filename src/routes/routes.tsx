@@ -5,13 +5,13 @@ import Authentication from "../pages/Authentication";
 import Auth from "../layout/auth/Auth";
 import ProtectedPage from "../pages/ProtectedPage";
 import { authTokenCheck } from "../utils/auth";
-import CartPage from "../pages/CartPage";
+import { CartPage } from "./LazyLoad";
 
 export const routers = createBrowserRouter([
   {
     path: "/",
     element: <Client />,
-    errorElement: "",
+    errorElement: <>Error</>,
     children: [
       {
         index: true,

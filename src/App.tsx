@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { setToken } from "./app/authSlice/authSlice";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { setCarts } from "./app/cartSlice/cartSlice";
 import { currentCarts } from "./utils/carts";
 
@@ -30,7 +30,9 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <RouterProvider router={routers} />
+      <Suspense fallback={<>Loading....</>}>
+        <RouterProvider router={routers} />
+      </Suspense>
     </>
   );
 }

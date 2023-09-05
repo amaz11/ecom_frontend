@@ -1,4 +1,17 @@
+// import { RouteObject } from "react-router-dom";
 import { store } from "../../app/store"
+
+export type RouteObjects = {
+    path?:string,
+    index?:boolean,
+    element?: JSX.Element,
+    lazy?:() => Promise<{default: React.ComponentType}>
+    children?: RouteObjects[];
+    errorElement?: JSX.Element;
+    loader?:()=> void
+}
+
+
 
 export type ModalType = {modal:boolean, setModal: (value: boolean) => void,productId?:string, setProductId?:(value:string)=> void}
 export type Product = {
